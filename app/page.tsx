@@ -71,7 +71,7 @@ export default function Home() {
             </section>
 
             {/* How It Works */}
-            <section className="card card-body mt-4">
+            <section className="card card-body mt-4 hover-interactive">
                 <h2 className="mb-2"><IconSearch /> كيف يعمل الاختبار؟</h2>
                 <div className="grid grid-2" style={{ gap: '24px' }}>
                     <div>
@@ -97,7 +97,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section id="about" className="card card-body mt-4 animate-slide-up stagger-4">
+            <section id="about" className="card card-body mt-4 animate-slide-up stagger-4 hover-interactive">
                 <div className="grid grid-2" style={{ gap: '48px', alignItems: 'center' }}>
                     <div className="card" style={{ padding: '32px', background: 'var(--brand-gradient)', color: 'white' }}>
                         <h2 className="mb-2" style={{ color: 'white' }}>عن Prepar Academy</h2>
@@ -122,7 +122,7 @@ export default function Home() {
             </section>
 
             {/* CTA Section */}
-            <section className="card card-highlight card-body mt-4 animate-fade-scale" style={{ textAlign: 'center' }}>
+            <section className="card card-highlight card-body mt-4 animate-fade-scale hover-interactive" style={{ textAlign: 'center' }}>
                 <h2 className="mb-1">مستعد لتعرف مستواك؟</h2>
                 <p className="text-muted mb-3">
                     ابدأ الآن واكتشف أين تقف، الخطوة الأولى نحو التفوق تبدأ من هنا.

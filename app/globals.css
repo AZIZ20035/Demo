@@ -431,9 +431,21 @@ h3 {
 }
 
 .card:hover {
-    border-color: var(--border-light);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    border-color: var(--brand-primary);
+    transform: translateY(-6px) scale(1.005);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 30px var(--brand-glow);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hover-interactive {
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: default;
+}
+
+.hover-interactive:hover {
+    transform: scale(1.01) translateY(-4px);
+    border-color: var(--brand-primary);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15), var(--shadow-glow);
 }
 
 .card-body {
@@ -592,6 +604,18 @@ h3 {
     color: var(--text-secondary);
 }
 
+.hover-interactive h2 svg,
+.hover-interactive h3 svg {
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), color 0.5s ease;
+}
+
+.hover-interactive:hover h2 svg,
+.hover-interactive:hover h3 svg {
+    transform: scale(1.15) rotate(3deg);
+    color: var(--brand-primary);
+    filter: drop-shadow(0 0 10px var(--brand-glow));
+}
+
 .badge-icon {
     font-size: 1rem;
 }
@@ -651,6 +675,24 @@ h3 {
     align-items: center;
     justify-content: center;
     font-size: 1.75rem;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    color: var(--text-secondary);
+}
+
+.feature-icon svg {
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1), color 0.5s ease;
+}
+
+.feature-card:hover .feature-icon {
+    background: var(--bg-glass-bright);
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+    box-shadow: 0 0 20px var(--brand-glow);
+    transform: scale(1.08);
+}
+
+.feature-card:hover .feature-icon svg {
+    transform: rotate(5deg) scale(1.05);
 }
 
 .feature-card h3 {
