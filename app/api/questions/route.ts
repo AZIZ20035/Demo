@@ -7,8 +7,8 @@ export async function GET() {
   }
 
   const res = await fetch(url, {
-    // caching بسيط: يحدث كل 10 دقايق
-    next: { revalidate: 600 },
+    // بدون caching - التحديث فوري من Google Sheets
+    cache: "no-store",
   });
 
   if (!res.ok) {
@@ -18,3 +18,4 @@ export async function GET() {
   const data = await res.json();
   return NextResponse.json(data);
 }
+// add something
