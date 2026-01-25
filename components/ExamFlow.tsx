@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import type { Question } from "./type";
 import QuizClient from "./QuizClient";
 
@@ -9,15 +9,16 @@ type ExamFlowProps = {
 };
 
 export default function ExamFlow({ buyUrl }: ExamFlowProps) {
-    const [phase, setPhase] = useState<"countdown" | "quiz">("countdown");
+    const [phase, setPhase] = useState<"countdown" | "loading" | "ready" | "quiz">("countdown");
     const [count, setCount] = useState(3);
     const [showReady, setShowReady] = useState(false);
     const [questions, setQuestions] = useState<Question[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
-    // Fetch questions in background while countdown is running
+    // Fetch questions in background
     useEffect(() => {
         const fetchQuestions = async () => {
+            setIsLoading(true);
             try {
                 const res = await fetch("/api/questions");
                 const json = await res.json();
@@ -55,7 +56,7 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
         fetchQuestions();
     }, []);
 
-    // Countdown timer
+    // Countdown timer effect
     useEffect(() => {
         if (phase !== "countdown") return;
 
@@ -67,7 +68,6 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
         } else if (count === 0 && !showReady) {
             setShowReady(true);
             const readyTimer = setTimeout(() => {
-                // Only start quiz when questions are loaded
                 if (!isLoading) {
                     setPhase("quiz");
                 }
@@ -89,19 +89,19 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
     // Show countdown
     if (phase === "countdown") {
         return (
-            <div className="countdown-container">
+            <div className="countdown-container animate-fade-scale">
                 {!showReady ? (
                     <>
-                        <div key={count} className="countdown-number">
+                        <div key={count} className="countdown-number animate-reveal-pop">
                             {count}
                         </div>
-                        <p className="countdown-text">استعد للاختبار...</p>
+                        <p className="countdown-text animate-fade-in stagger-1">استعد لتمارينك...</p>
                     </>
                 ) : (
                     <>
-                        <div className="countdown-ready">انطلق! 🚀</div>
-                        <p className="countdown-text">
-                            {isLoading ? "جاري تحميل الأسئلة..." : "جاري البدء..."}
+                        <div className="countdown-ready animate-fade-scale">ابدأ الاختبار</div>
+                        <p className="countdown-text animate-fade-in stagger-1">
+                            {isLoading ? "جاري تحضير المحتوى..." : "جاري البدء..."}
                         </p>
                     </>
                 )}
@@ -109,6 +109,6 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
         );
     }
 
-    // Show quiz directly - questions already loaded!
+    // Show quiz interface
     return <QuizClient questions={questions} buyUrl={buyUrl} />;
 }

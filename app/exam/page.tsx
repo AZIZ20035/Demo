@@ -4,5 +4,9 @@ export default function ExamPage() {
   const buyUrl = "https://preparacademy.com/";
 
   // No server-side fetching - ExamFlow handles it client-side in parallel with countdown
-  return <ExamFlow buyUrl={buyUrl} />;
+  return (
+    <div className="animate-fade-in">
+      <ExamFlow buyUrl={buyUrl} />
+    </div>
+  );
 }
