@@ -646,6 +646,32 @@ h3 {
     transform: scale(1.15);
 }
 
+.bg-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(300px, 60vw, 600px);
+    height: clamp(300px, 60vw, 600px);
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(40px);
+    opacity: 0.04;
+    animation: watermark-float 20s infinite ease-in-out;
+}
+
+@keyframes watermark-float {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: translate(-45%, -55%) rotate(5deg) scale(1.05);
+    }
+}
+
 .hero-bg-logo {
     position: absolute;
     top: -10%;

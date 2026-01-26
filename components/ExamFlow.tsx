@@ -89,7 +89,10 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
     // Show countdown
     if (phase === "countdown") {
         return (
-            <div className="countdown-container animate-fade-scale">
+            <div className="countdown-container animate-fade-scale" style={{ position: 'relative', overflow: 'hidden' }}>
+                <div className="bg-watermark">
+                    <img src="/Logo.jfif" alt="" />
+                </div>
                 <div className="logo-icon animate-float-slow mb-3" style={{ width: '80px', height: '80px', fontSize: '2rem' }}>
                     <img src="/Logo.jfif" alt="preparacademy" />
                 </div>
