@@ -23,13 +23,13 @@ export default function Footer() {
                     {/* Brand Info */}
                     <div className="footer-brand">
                         <div className="logo mb-2">
-                            <div className="logo-icon">
-                                <IconBook />
+                            <div className="logo-icon" style={{ overflow: 'hidden' }}>
+                                <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                             </div>
-                            <span>Prepar Academy</span>
+                            <span>preparacademy</span>
                         </div>
                         <p className="footer-desc">
-                            Prepar Academy منصة تعليمية متكاملة تهدف إلى تطوير مهارات الطلاب وتحقيق أفضل النتائج من خلال محتوى تعليمي مبتكر ومبسط.
+                            preparacademy منصة تعليمية متكاملة تهدف إلى تطوير مهارات الطلاب وتحقيق أفضل النتائج من خلال محتوى تعليمي مبتكر ومبسط.
                         </p>
                         <div className="social-links">
                             <a href="#" className="social-btn" aria-label="WhatsApp"><IconWhatsApp /></a>
@@ -60,7 +60,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <IconMail className="contact-icon" />
-                                <span>info@prepacademy.com</span>
+                                <span>info@preparacademy.com</span>
                             </li>
                             <li>
                                 <span className="contact-text">الرياض، المملكة العربية السعودية</span>
@@ -82,7 +82,7 @@ export default function Footer() {
                 </div>
 
                 <div className="footer-bottom">
-                    <p>جميع الحقوق محفوظة © 2026 | أكاديمية الإعداد (PrepAcademy)</p>
+                    <p>جميع الحقوق محفوظة © 2026 | preparacademy</p>
                 </div>
             </div>
         </footer>

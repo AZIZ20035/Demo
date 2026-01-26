@@ -192,8 +192,10 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
             <div className="container">
                 <header className="navbar">
                     <a href="/#about" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <div className="logo-icon"><IconBook /></div>
-                        <span>Prepar Academy</span>
+                        <div className="logo-icon shadow-glow" style={{ overflow: 'hidden' }}>
+                            <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        </div>
+                        <span>preparacademy</span>
                     </a>
                     <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                         <ThemeToggle />
@@ -229,7 +231,9 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                             <span>احصل على الدورة الكاملة</span>
                         </a>
                         <a className="btn btn-ghost btn-animate" href="/">
-                            <IconBook />
+                            <div style={{ width: '20px', height: '20px', overflow: 'hidden', borderRadius: '4px', marginLeft: '8px' }}>
+                                <img src="/Logo.jfif" alt="L" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            </div>
                             <span>العودة للرئيسية</span>
                         </a>
                     </div>
@@ -292,8 +296,10 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
         <div className="container">
             <header className="navbar">
                 <div className="logo">
-                    <div className="logo-icon"><IconBook /></div>
-                    <span>PrepAcademy</span>
+                    <div className="logo-icon shadow-glow" style={{ overflow: 'hidden' }}>
+                        <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <span>preparacademy</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                     <div className={`exam-timer ${isLowTime ? "low-time" : ""}`}>

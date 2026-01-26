@@ -7,10 +7,10 @@ export default function Home() {
             {/* Header */}
             <header className="navbar">
                 <a href="#about" className="logo animate-float-slow" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div className="logo-icon shadow-glow">
-                        <IconBook />
+                    <div className="logo-icon shadow-glow" style={{ overflow: 'hidden' }}>
+                        <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <span>Prepar Academy</span>
+                    <span>preparacademy</span>
                 </a>
                 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                     <div className="badge animate-pulse-soft">
@@ -100,9 +100,9 @@ export default function Home() {
             <section id="about" className="card card-body mt-4 animate-slide-up stagger-4 hover-interactive">
                 <div className="grid grid-2" style={{ gap: '48px', alignItems: 'center' }}>
                     <div className="card" style={{ padding: '32px', background: 'var(--brand-gradient)', color: 'white' }}>
-                        <h2 className="mb-2" style={{ color: 'white' }}>عن Prepar Academy</h2>
+                        <h2 className="mb-2" style={{ color: 'white' }}>عن preparacademy</h2>
                         <p style={{ fontSize: '1.1rem', lineHeight: '2', opacity: '0.9' }}>
-                            Prepar Academy منصة تعليمية متخصصة تقدم ملفات شاملة ومتكاملة،
+                            preparacademy منصة تعليمية متخصصة تقدم ملفات شاملة ومتكاملة،
                             مصممة لتسهيل عملية التعلم وتحقيق أفضل النتائج، من خلال محتوى مركز
                             وبسيط يساعد الطلاب والمتعلمين على توفير الوقت والجهد.
                         </p>

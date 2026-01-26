@@ -1,4 +1,4 @@
-# PrepAcademy Design System
+# preparacademy Design System
 
 ## Design Tokens
 
