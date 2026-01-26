@@ -10,30 +10,32 @@
    ============================================ */
 :root,
 html.light {
-    /* Brand Colors (Education Green) */
+    /* Brand Colors (Official Academy Green) */
     --brand-primary: #10b981;
     --brand-secondary: #059669;
     --brand-accent: #34d399;
     --brand-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    --brand-glow: rgba(16, 185, 129, 0.2);
+    --brand-glow: rgba(16, 185, 129, 0.25);
 
     /* Backgrounds */
-    --bg-primary: #f8fafc;
+    --bg-primary: #f0fdf4;
+    /* Very subtle mint tint */
     --bg-secondary: #ffffff;
     --bg-tertiary: #f1f5f9;
     --bg-card: #ffffff;
     --bg-card-hover: #f1f5f9;
-    --bg-glass: rgba(255, 255, 255, 0.85);
+    --bg-glass: rgba(255, 255, 255, 0.9);
     --bg-glass-bright: rgba(255, 255, 255, 0.98);
 
     /* Text Colors */
-    --text-primary: #1e293b;
-    --text-secondary: #475569;
-    --text-muted: #94a3b8;
+    --text-primary: #064e3b;
+    /* Deep green for better contrast and branding */
+    --text-secondary: #374151;
+    --text-muted: #6b7280;
 
     /* Semantic Colors */
     --accent-success: #10b981;
-    --accent-success-glow: rgba(16, 185, 129, 0.15);
+    --accent-success-glow: rgba(16, 185, 129, 0.2);
     --accent-success-bg: #ecfdf5;
     --accent-danger: #ef4444;
     --accent-danger-bg: #fef2f2;
@@ -42,57 +44,58 @@ html.light {
     --accent-info: #0ea5e9;
 
     /* Borders */
-    --border-subtle: #e2e8f0;
-    --border-light: #cbd5e1;
+    --border-subtle: #dcfce7;
+    --border-light: #bbf7d0;
     --border-focus: #10b981;
 
     /* Shadows */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-glow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(6, 78, 59, 0.05), 0 2px 4px -1px rgba(6, 78, 59, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(6, 78, 59, 0.05), 0 4px 6px -2px rgba(6, 78, 59, 0.05);
+    --shadow-glow: 0 10px 25px -5px rgba(16, 185, 129, 0.3);
     --shadow-success-glow: 0 0 20px var(--accent-success-glow);
 }
 
 /* ============================================
-   DARK THEME (ORIGINAL PREMIUM DARK)
+   DARK THEME (OFFICIAL FOREST GREEN)
    ============================================ */
 html.dark {
-    /* Brand Colors (Indigo-Violet Gradient) */
-    --brand-primary: #6366f1;
-    --brand-secondary: #8b5cf6;
-    --brand-accent: #a855f7;
-    --brand-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-    --brand-glow: rgba(99, 102, 241, 0.4);
+    /* Brand Colors (Vibrant Green to Emerald) */
+    --brand-primary: #10b981;
+    --brand-secondary: #34d399;
+    --brand-accent: #059669;
+    --brand-gradient: linear-gradient(135deg, #10b981 0%, #34d399 50%, #059669 100%);
+    --brand-glow: rgba(16, 185, 129, 0.5);
 
-    /* Backgrounds */
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #111827;
-    --bg-tertiary: #1f2937;
-    --bg-card: rgba(17, 24, 39, 0.85);
-    --bg-card-hover: rgba(31, 41, 55, 0.95);
-    --bg-glass: rgba(255, 255, 255, 0.03);
-    --bg-glass-bright: rgba(255, 255, 255, 0.08);
+    /* Backgrounds (Deep Academy Forest Green - Academic Blackboard style) */
+    --bg-primary: #001f1c;
+    /* Very deep dark green */
+    --bg-secondary: #002e29;
+    --bg-tertiary: #003d36;
+    --bg-card: rgba(0, 46, 41, 0.85);
+    --bg-card-hover: rgba(0, 61, 54, 0.95);
+    --bg-glass: rgba(255, 255, 255, 0.04);
+    --bg-glass-bright: rgba(255, 255, 255, 0.1);
 
     /* Text Colors */
-    --text-primary: #f8fafc;
-    --text-secondary: rgba(248, 250, 252, 0.8);
-    --text-muted: rgba(248, 250, 252, 0.5);
+    --text-primary: #f0fdf4;
+    --text-secondary: rgba(240, 253, 244, 0.8);
+    --text-muted: rgba(240, 253, 244, 0.5);
 
     /* Semantic Colors */
     --accent-success: #10b981;
-    --accent-success-glow: rgba(16, 185, 129, 0.35);
-    --accent-success-bg: rgba(16, 185, 129, 0.15);
+    --accent-success-glow: rgba(16, 185, 129, 0.4);
+    --accent-success-bg: rgba(16, 185, 129, 0.2);
     --accent-danger: #ef4444;
-    --accent-danger-bg: rgba(239, 68, 68, 0.15);
+    --accent-danger-bg: rgba(239, 68, 68, 0.2);
     --accent-warning: #f59e0b;
-    --accent-warning-bg: rgba(245, 158, 11, 0.15);
+    --accent-warning-bg: rgba(245, 158, 11, 0.2);
     --accent-info: #06b6d4;
 
     /* Borders */
     --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-light: rgba(255, 255, 255, 0.12);
-    --border-focus: rgba(99, 102, 241, 0.6);
+    --border-light: rgba(16, 185, 129, 0.2);
+    --border-focus: rgba(16, 185, 129, 0.6);
 
     /* Shadows */
     --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -567,7 +570,7 @@ h3 {
 
 /* Success Button */
 .btn-success {
-    background: linear-gradient(135deg, var(--accent-success), #059669);
+    background: linear-gradient(135deg, var(--accent-success), #10b981);
     color: white;
     box-shadow: var(--shadow-sm), var(--shadow-success-glow);
 }
@@ -575,6 +578,7 @@ h3 {
 .btn-success:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md), 0 8px 30px var(--accent-success-glow);
+    background: linear-gradient(135deg, #10b981, #059669);
 }
 
 /* Large Button */
@@ -846,9 +850,9 @@ html.dark .bg-watermark {
     bottom: 0;
     background: linear-gradient(90deg,
             transparent 0%,
-            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0.4) 50%,
             transparent 100%);
-    animation: shimmer 2s infinite;
+    animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
