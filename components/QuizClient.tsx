@@ -226,7 +226,14 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                             <IconChart />
                             <span>{showDetails ? "إخفاء التفاصيل" : "عرض التفاصيل"}</span>
                         </button>
-                        <a className="btn btn-success btn-animate" href={buyUrl} target="_blank" rel="noreferrer">
+                        <a
+                            className="btn btn-success btn-animate"
+                            href={percentage <= 50
+                                ? "https://preparacademy.com/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D9%82%D8%AF%D8%B1%D8%A7%D8%AA/p464090062"
+                                : "https://preparacademy.com/%D8%AA%D8%AC%D9%85%D9%8A%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D9%82%D8%AF%D8%B1%D8%A7%D8%AA-2026-%D8%A7%D9%84%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A7%D9%84%D8%A3%D8%AD%D8%AF%D8%AB-%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%A6%D9%84%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%82%D8%B9%D8%A9/p511504040"}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             <IconRocket />
                             <span>احصل على الدورة الكاملة</span>
                         </a>
