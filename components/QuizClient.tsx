@@ -191,9 +191,9 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
         return (
             <div className="container">
                 <header className="navbar">
-                    <a href="/#about" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <div className="logo-icon shadow-glow" style={{ overflow: 'hidden' }}>
-                            <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <a href="/" className="logo">
+                        <div className="logo-icon">
+                            <img src="/Logo.jfif" alt="Logo" />
                         </div>
                         <span>preparacademy</span>
                     </a>
@@ -231,8 +231,8 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                             <span>احصل على الدورة الكاملة</span>
                         </a>
                         <a className="btn btn-ghost btn-animate" href="/">
-                            <div style={{ width: '20px', height: '20px', overflow: 'hidden', borderRadius: '4px', marginLeft: '8px' }}>
-                                <img src="/Logo.jfif" alt="L" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <div className="logo-icon" style={{ width: '24px', height: '24px', borderRadius: '4px' }}>
+                                <img src="/Logo.jfif" alt="Logo" />
                             </div>
                             <span>العودة للرئيسية</span>
                         </a>
@@ -296,8 +296,8 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
         <div className="container">
             <header className="navbar">
                 <div className="logo">
-                    <div className="logo-icon shadow-glow" style={{ overflow: 'hidden' }}>
-                        <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div className="logo-icon">
+                        <img src="/Logo.jfif" alt="Logo" />
                     </div>
                     <span>preparacademy</span>
                 </div>

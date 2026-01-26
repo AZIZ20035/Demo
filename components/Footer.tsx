@@ -23,8 +23,8 @@ export default function Footer() {
                     {/* Brand Info */}
                     <div className="footer-brand">
                         <div className="logo mb-2">
-                            <div className="logo-icon" style={{ overflow: 'hidden' }}>
-                                <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <div className="logo-icon">
+                                <img src="/Logo.jfif" alt="Logo" />
                             </div>
                             <span>preparacademy</span>
                         </div>

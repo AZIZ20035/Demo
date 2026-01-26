@@ -90,6 +90,9 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
     if (phase === "countdown") {
         return (
             <div className="countdown-container animate-fade-scale">
+                <div className="logo-icon animate-float-slow mb-3" style={{ width: '80px', height: '80px', fontSize: '2rem' }}>
+                    <img src="/Logo.jfif" alt="preparacademy" />
+                </div>
                 {!showReady ? (
                     <>
                         <div key={count} className="countdown-number animate-reveal-pop">

@@ -6,9 +6,9 @@ export default function Home() {
         <div className="container">
             {/* Header */}
             <header className="navbar">
-                <a href="#about" className="logo animate-float-slow" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div className="logo-icon shadow-glow" style={{ overflow: 'hidden' }}>
-                        <img src="/Logo.jfif" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <a href="#about" className="logo" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <div className="logo-icon">
+                        <img src="/Logo.jfif" alt="Logo" />
                     </div>
                     <span>preparacademy</span>
                 </a>
@@ -23,6 +23,9 @@ export default function Home() {
 
             {/* Hero Section */}
             <section className="hero">
+                <div className="hero-bg-logo">
+                    <img src="/Logo.jfif" alt="" />
+                </div>
                 <h1 className="animate-slide-up">اختبار تحديد المستوى</h1>
                 <p className="hero-subtitle animate-slide-up stagger-1">
                     اكتشف مستواك الحقيقي في القدرات خلال دقائق معدودة. اختبار مصمم بعناية
