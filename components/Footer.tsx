@@ -29,24 +29,24 @@ export default function Footer() {
                             <span>preparacademy</span>
                         </div>
                         <p className="footer-desc">
-                            preparacademy منصة تعليمية متكاملة تهدف إلى تطوير مهارات الطلاب وتحقيق أفضل النتائج من خلال محتوى تعليمي مبتكر ومبسط.
+                            أكاديمية إعداد منصة تعليمية متخصصة تقدم ملفات شاملة ومتكاملة، مصممة لتسهيل عملية التعلم وتحقيق أفضل النتائج.
                         </p>
                         <div className="social-links">
-                            <a href="#" className="social-btn" aria-label="WhatsApp"><IconWhatsApp /></a>
-                            <a href="#" className="social-btn" aria-label="Instagram"><IconInstagram /></a>
-                            <a href="#" className="social-btn" aria-label="Twitter"><IconTwitter /></a>
-                            <a href="#" className="social-btn" aria-label="Facebook"><IconFacebook /></a>
+                            <a href="https://wa.me/966567908664" target="_blank" rel="noreferrer" className="social-btn" aria-label="WhatsApp"><IconWhatsApp /></a>
+                            <a href="https://instagram.com/preparacademy" target="_blank" rel="noreferrer" className="social-btn" aria-label="Instagram"><IconInstagram /></a>
+                            <a href="https://twitter.com/preparacademy" target="_blank" rel="noreferrer" className="social-btn" aria-label="Twitter"><IconTwitter /></a>
+                            <a href="https://facebook.com/preparacademy" target="_blank" rel="noreferrer" className="social-btn" aria-label="Facebook"><IconFacebook /></a>
                         </div>
                     </div>
 
                     {/* Quick Links */}
                     <div className="footer-links">
-                        <h4>روابط سريعة</h4>
+                        <h4>روابط مهمة</h4>
                         <ul>
-                            <li><a href="/">الصفحة الرئيسية</a></li>
-                            <li><a href="/exam">بدء الاختبار</a></li>
-                            <li><a href="#">المدونة</a></li>
-                            <li><a href="#">الأسئلة الشائعة</a></li>
+                            <li><a href="/">الرئيسية</a></li>
+                            <li><a href="/exam">ابدأ الاختبار</a></li>
+                            <li><a href="https://preparacademy.com/" target="_blank" rel="noreferrer">متجر الأكاديمية</a></li>
+                            <li><a href="#">سياسة الخصوصية</a></li>
                         </ul>
                     </div>
 
@@ -56,28 +56,28 @@ export default function Footer() {
                         <ul>
                             <li>
                                 <IconPhone className="contact-icon" />
-                                <span>+966 500 000 000</span>
+                                <span>+966 567 908 664</span>
                             </li>
                             <li>
                                 <IconMail className="contact-icon" />
-                                <span>info@preparacademy.com</span>
+                                <span>preparacademy2024@gmail.com</span>
                             </li>
                             <li>
-                                <span className="contact-text">الرياض، المملكة العربية السعودية</span>
+                                <span className="contact-text">المملكة العربية السعودية</span>
                             </li>
                         </ul>
                     </div>
 
                     {/* Payment & Trust */}
                     <div className="footer-trust">
-                        <h4>وسائل الدفع الآمنة</h4>
+                        <h4>وسائل الدفع</h4>
                         <div className="payment-icons">
                             <IconVisa />
                             <IconMastercard />
                             <IconMada />
                             <IconApplePay />
                         </div>
-                        <p className="trust-text">جميع المدفوعات محمية ومشفرة بأحدث التقنيات الأمنية.</p>
+                        <p className="trust-text">جميع المدفوعات آمنة ومشفرة.</p>
                     </div>
                 </div>
 
