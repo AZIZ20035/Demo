@@ -651,13 +651,17 @@ h3 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(300px, 60vw, 600px);
-    height: clamp(300px, 60vw, 600px);
-    z-index: -1;
+    width: clamp(350px, 70vw, 750px);
+    height: clamp(350px, 70vw, 750px);
+    z-index: 0;
     pointer-events: none;
-    filter: blur(40px);
-    opacity: 0.04;
+    filter: blur(15px);
+    opacity: 0.12;
     animation: watermark-float 20s infinite ease-in-out;
+}
+
+html.dark .bg-watermark {
+    opacity: 0.08;
 }
 
 @keyframes watermark-float {
@@ -948,6 +952,13 @@ h3 {
     justify-content: center;
     text-align: center;
     padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.countdown-container>*:not(.bg-watermark) {
+    position: relative;
+    z-index: 2;
 }
 
 .countdown-number {
