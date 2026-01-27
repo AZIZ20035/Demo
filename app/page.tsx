@@ -15,7 +15,7 @@ export default function Home() {
                 <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
                     <div className="badge animate-pulse-soft">
                         <span className="badge-icon"><IconClock /></span>
-                        20 سؤال • 5-8 دقائق
+                        20 سؤال • 10 دقائق
                     </div>
                     <ThemeToggle />
                 </div>
