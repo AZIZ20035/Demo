@@ -272,8 +272,8 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                                             </div>
                                             <p className="detail-question">{q.text}</p>
                                             {q.image && (
-                                                <div className="detail-image">
-                                                    <img src={q.image} alt="" className="img-fluid rounded" />
+                                                <div className="question-image-container mb-3">
+                                                    <img src={q.image} alt="Question" className="question-image" />
                                                 </div>
                                             )}
                                             <div className="detail-answers">
@@ -339,12 +339,8 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                 <p className="question-text">{currentQuestion.text}</p>
 
                 {currentQuestion.image && (
-                    <div className="question-image-container animate-fade-in">
-                        <img
-                            src={currentQuestion.image}
-                            alt="Question illustration"
-                            className="question-image"
-                        />
+                    <div className="question-image-container">
+                        <img src={currentQuestion.image} alt="Question" className="question-image" />
                     </div>
                 )}
 

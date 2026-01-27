@@ -866,50 +866,10 @@ html.dark .bg-watermark {
 }
 
 /* Question Card */
-/* Question Images */
-.question-image-container {
-    margin: 1.5rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-subtle);
-    box-shadow: var(--shadow-sm);
-    max-height: 400px;
-}
-
-.question-image {
-    max-width: 100%;
-    max-height: 400px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.question-image:hover {
-    transform: scale(1.02);
-}
-
-.detail-image {
-    margin: 0.75rem 0;
-    max-width: 300px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    border: 1px solid var(--border-subtle);
-}
-
-.detail-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 .question-text {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 1.5rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 8px;
     line-height: 1.6;
 }
 
@@ -1930,6 +1890,39 @@ html.dark .bg-watermark {
     transition: background-color var(--transition-normal),
         border-color var(--transition-normal),
         color var(--transition-normal);
+}
+
+/* ============================================
+   QUESTION IMAGES
+   ============================================ */
+.question-image-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem auto 2rem auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+    animation: fadeScale 0.6s var(--ease-back);
+}
+
+.question-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    display: block;
+    transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.question-image:hover {
+    transform: scale(1.02);
+}
+
+.detail-card .question-image-container {
+    max-width: 400px;
+    margin: 1rem 0;
 }
 
 /* Preserve animation-specific transitions */
