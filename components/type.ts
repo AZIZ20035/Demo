@@ -5,7 +5,7 @@ export type Question = {
   text: string;
   options: string[];
   correct: string; // هنقارن بالنص
-  image?: string; // رابط الصورة الاختياري
+  imageUrl?: string;
 };
 
 export function mapRowToQuestion(row: SheetRow, index: number): Question {
@@ -19,13 +19,26 @@ export function mapRowToQuestion(row: SheetRow, index: number): Question {
   ].map(v => String(v ?? "").trim()).filter(Boolean);
 
   const correct = String(row["الاختيار الصحيح"] ?? "").trim();
-  const image = String(row["الصورة"] ?? "").trim();
+
+  // معالجة رابط الصورة
+  let imageUrl: string | undefined = undefined;
+  const rawImageUrl = row["صورة السؤال"] ?? row["Image"] ?? row["صورة"];
+  if (rawImageUrl && String(rawImageUrl).trim()) {
+    const urlStr = String(rawImageUrl).trim();
+    // تحويل روابط Google Drive للصيغة المباشرة
+    const driveMatch = urlStr.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (driveMatch) {
+      imageUrl = `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
+    } else {
+      imageUrl = urlStr;
+    }
+  }
 
   return {
     id: String(index + 1),
     text,
     options,
     correct,
-    image: image || undefined,
+    imageUrl,
   };
 }

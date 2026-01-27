@@ -84,6 +84,8 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
     const [isFinished, setIsFinished] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
     const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
+    const [imageModalOpen, setImageModalOpen] = useState(false);
+    const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
 
     useEffect(() => {
         setUserAnswers(
@@ -271,11 +273,6 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                                                 </span>
                                             </div>
                                             <p className="detail-question">{q.text}</p>
-                                            {q.image && (
-                                                <div className="question-image-container mb-3">
-                                                    <img src={q.image} alt="Question" className="question-image" />
-                                                </div>
-                                            )}
                                             <div className="detail-answers">
                                                 {userAnswer && !isCorrect && (
                                                     <p className="user-answer">
@@ -338,9 +335,18 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
             <div className="card card-body animate-fade-scale">
                 <p className="question-text">{currentQuestion.text}</p>
 
-                {currentQuestion.image && (
+                {/* عرض الصورة لو موجودة */}
+                {currentQuestion.imageUrl && (
                     <div className="question-image-container">
-                        <img src={currentQuestion.image} alt="Question" className="question-image" />
+                        <img
+                            src={currentQuestion.imageUrl}
+                            alt="صورة السؤال"
+                            className="question-image"
+                            onClick={() => {
+                                setModalImageUrl(currentQuestion.imageUrl!);
+                                setImageModalOpen(true);
+                            }}
+                        />
                     </div>
                 )}
 
@@ -378,6 +384,24 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                     )}
                 </div>
             </div>
+
+            {/* Modal لعرض الصورة بحجم كبير */}
+            {imageModalOpen && modalImageUrl && (
+                <div
+                    className="image-modal-overlay"
+                    onClick={() => setImageModalOpen(false)}
+                >
+                    <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                        <img src={modalImageUrl} alt="صورة السؤال - عرض كامل" />
+                        <button
+                            className="modal-close-btn"
+                            onClick={() => setImageModalOpen(false)}
+                        >
+                            ✕
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
