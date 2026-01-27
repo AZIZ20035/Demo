@@ -34,11 +34,27 @@ export function mapRowToQuestion(row: SheetRow, index: number): Question {
 
   const correct = String(row["الاختيار الصحيح"] ?? "").trim();
 
-  // جلب آخر قيمة في الصف كـ URL صورة إذا كانت موجودة
+  // جلب رابط الصورة بشكل أكثر ذكاءً
   const keys = Object.keys(row);
-  const lastKey = keys[keys.length - 1];
-  const lastValue = String(row[lastKey] ?? "").trim();
-  const imageUrl = lastValue.startsWith("http") ? getDirectImageUrl(lastValue) : undefined;
+  // البحث عن مفتاح يحتوي على "صورة" أو "image"
+  const imageKey = keys.find(k => k.includes("صورة") || k.toLowerCase().includes("image"));
+
+  let imageUrl: string | undefined;
+  if (imageKey) {
+    const value = String(row[imageKey] ?? "").trim();
+    if (value.startsWith("http")) {
+      imageUrl = getDirectImageUrl(value);
+    }
+  }
+
+  // إذا لم يجد المفتاح، يحاول مع آخر عمود كخيار احتياطي
+  if (!imageUrl) {
+    const lastKey = keys[keys.length - 1];
+    const lastValue = String(row[lastKey] ?? "").trim();
+    if (lastValue.startsWith("http")) {
+      imageUrl = getDirectImageUrl(lastValue);
+    }
+  }
 
   return {
     id: String(index + 1),
