@@ -11,13 +11,13 @@ export type Question = {
 /**
  * Transforms a Google Drive view link to a direct image URL.
  * Example: https://drive.google.com/file/d/1zQQsKF7eyZmS3UkIlDr1VZfxJo_fejsA/view?usp=sharing
- * to: https://drive.google.com/uc?export=view&id=1zQQsKF7eyZmS3UkIlDr1VZfxJo_fejsA
+ * to: https://lh3.googleusercontent.com/d/1zQQsKF7eyZmS3UkIlDr1VZfxJo_fejsA
  */
 function getDirectImageUrl(url: string): string {
   if (!url) return "";
   const match = url.match(/\/d\/([^/]+)/);
   if (match && match[1]) {
-    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+    return `https://lh3.googleusercontent.com/d/${match[1]}`;
   }
   return url;
 }

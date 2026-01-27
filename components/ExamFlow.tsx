@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { Question } from "./type";
+import { mapRowToQuestion, type Question, type SheetRow } from "./type";
 import QuizClient from "./QuizClient";
 
 type ExamFlowProps = {
@@ -24,25 +24,17 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
                 const json = await res.json();
 
                 if (Array.isArray(json?.data)) {
-                    const mappedQuestions = json.data
-                        .map((row: Record<string, string>, index: number) => {
-                            const text = String(row["السؤال"] ?? "").trim();
-                            const options = [
-                                row["الاختيار الأول"],
-                                row["الاختيار الثاني"],
-                                row["الاختيار الثالث"],
-                                row["الاختيار الرابع"],
-                            ].map(v => String(v ?? "").trim()).filter(Boolean);
-                            const correct = String(row["الاختيار الصحيح"] ?? "").trim();
-
-                            return {
-                                id: String(index + 1),
-                                text,
-                                options,
-                                correct,
-                            };
-                        })
+                    const rows: SheetRow[] = json.data;
+                    const mappedQuestions = rows
+                        .map(mapRowToQuestion)
                         .filter((q: Question) => q.text && q.options.length === 4);
+
+                    // DEBUG: Log questions with images
+                    const questionsWithImages = mappedQuestions.filter(q => q.imageUrl);
+                    console.log("=== ExamFlow DEBUG: Questions with imageUrl ===");
+                    console.log("Total questions:", mappedQuestions.length);
+                    console.log("Questions with images:", questionsWithImages.length);
+                    console.log("=== END ExamFlow DEBUG ===");
 
                     setQuestions(mappedQuestions);
                 }
