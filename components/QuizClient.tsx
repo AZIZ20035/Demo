@@ -95,15 +95,14 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
             }))
         );
 
-        // DEBUG: Log questions with images on client side
+        // Preload all question images for instant display
         const questionsWithImages = questions.filter(q => q.imageUrl);
-        console.log("=== CLIENT DEBUG: Questions with imageUrl ===");
-        console.log("Total questions:", questions.length);
-        console.log("Questions with images:", questionsWithImages.length);
         questionsWithImages.forEach((q) => {
-            console.log(`Question ${q.id}: imageUrl = ${q.imageUrl}`);
+            if (q.imageUrl) {
+                const img = new Image();
+                img.src = q.imageUrl;
+            }
         });
-        console.log("=== END CLIENT DEBUG ===");
     }, [questions]);
 
     useEffect(() => {
@@ -127,12 +126,6 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
             setIsFinished(true);
         }
     }, [timeLeft, isFinished]);
-
-    // DEBUG: Log current question imageUrl when navigating
-    useEffect(() => {
-        const q = questions[currentIndex];
-        console.log(`[NAV] Question ${currentIndex + 1}/${questions.length} (ID: ${q?.id}): imageUrl = ${q?.imageUrl || 'undefined'}`);
-    }, [currentIndex, questions]);
 
     const formatTime = (seconds: number): string => {
         const mins = Math.floor(seconds / 60);
@@ -352,7 +345,7 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                 <p className="question-text">{currentQuestion.text}</p>
 
                 {currentQuestion.imageUrl && (
-                    <div className="question-image-container animate-fade-in stagger-1">
+                    <div key={currentQuestion.id} className="question-image-container animate-fade-in stagger-1">
                         <img
                             src={currentQuestion.imageUrl}
                             alt="Question Illustration"

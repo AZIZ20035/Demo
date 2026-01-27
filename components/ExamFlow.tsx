@@ -29,13 +29,6 @@ export default function ExamFlow({ buyUrl }: ExamFlowProps) {
                         .map(mapRowToQuestion)
                         .filter((q: Question) => q.text && q.options.length === 4);
 
-                    // DEBUG: Log questions with images
-                    const questionsWithImages = mappedQuestions.filter(q => q.imageUrl);
-                    console.log("=== ExamFlow DEBUG: Questions with imageUrl ===");
-                    console.log("Total questions:", mappedQuestions.length);
-                    console.log("Questions with images:", questionsWithImages.length);
-                    console.log("=== END ExamFlow DEBUG ===");
-
                     setQuestions(mappedQuestions);
                 }
             } catch (error) {
