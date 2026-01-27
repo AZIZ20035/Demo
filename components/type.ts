@@ -4,9 +4,23 @@ export type Question = {
   id: string;
   text: string;
   options: string[];
-  correct: string; // هنقارن بالنص
+  correct: string;
   imageUrl?: string;
 };
+
+/**
+ * Transforms a Google Drive view link to a direct image URL.
+ * Example: https://drive.google.com/file/d/1zQQsKF7eyZmS3UkIlDr1VZfxJo_fejsA/view?usp=sharing
+ * to: https://drive.google.com/uc?export=view&id=1zQQsKF7eyZmS3UkIlDr1VZfxJo_fejsA
+ */
+function getDirectImageUrl(url: string): string {
+  if (!url) return "";
+  const match = url.match(/\/d\/([^/]+)/);
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+  }
+  return url;
+}
 
 export function mapRowToQuestion(row: SheetRow, index: number): Question {
   const text = String(row["السؤال"] ?? "").trim();
@@ -20,19 +34,11 @@ export function mapRowToQuestion(row: SheetRow, index: number): Question {
 
   const correct = String(row["الاختيار الصحيح"] ?? "").trim();
 
-  // معالجة رابط الصورة
-  let imageUrl: string | undefined = undefined;
-  const rawImageUrl = row["صورة السؤال"] ?? row["Image"] ?? row["صورة"];
-  if (rawImageUrl && String(rawImageUrl).trim()) {
-    const urlStr = String(rawImageUrl).trim();
-    // تحويل روابط Google Drive للصيغة المباشرة
-    const driveMatch = urlStr.match(/\/d\/([a-zA-Z0-9_-]+)/);
-    if (driveMatch) {
-      imageUrl = `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
-    } else {
-      imageUrl = urlStr;
-    }
-  }
+  // جلب آخر قيمة في الصف كـ URL صورة إذا كانت موجودة
+  const keys = Object.keys(row);
+  const lastKey = keys[keys.length - 1];
+  const lastValue = String(row[lastKey] ?? "").trim();
+  const imageUrl = lastValue.startsWith("http") ? getDirectImageUrl(lastValue) : undefined;
 
   return {
     id: String(index + 1),

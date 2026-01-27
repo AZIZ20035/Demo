@@ -14,7 +14,8 @@ import {
     IconBook,
     IconChart,
     IconTarget,
-    IconBolt
+    IconBolt,
+    IconSearch
 } from "./Icons";
 
 // --- Premium Components ---
@@ -84,8 +85,7 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
     const [isFinished, setIsFinished] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
     const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
-    const [imageModalOpen, setImageModalOpen] = useState(false);
-    const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
+    const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
     useEffect(() => {
         setUserAnswers(
@@ -335,18 +335,21 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
             <div className="card card-body animate-fade-scale">
                 <p className="question-text">{currentQuestion.text}</p>
 
-                {/* عرض الصورة لو موجودة */}
                 {currentQuestion.imageUrl && (
-                    <div className="question-image-container">
+                    <div className="question-image-container animate-fade-in stagger-1">
                         <img
                             src={currentQuestion.imageUrl}
-                            alt="صورة السؤال"
-                            className="question-image"
-                            onClick={() => {
-                                setModalImageUrl(currentQuestion.imageUrl!);
-                                setImageModalOpen(true);
-                            }}
+                            alt="Question Illustration"
+                            className="question-image-preview"
+                            onClick={() => setLightboxImage(currentQuestion.imageUrl || null)}
                         />
+                        <button
+                            className="image-zoom-badge"
+                            onClick={() => setLightboxImage(currentQuestion.imageUrl || null)}
+                        >
+                            <IconSearch />
+                            <span>توسيع الصورة</span>
+                        </button>
                     </div>
                 )}
 
@@ -385,20 +388,17 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                 </div>
             </div>
 
-            {/* Modal لعرض الصورة بحجم كبير */}
-            {imageModalOpen && modalImageUrl && (
+            {/* Lightbox Modal */}
+            {lightboxImage && (
                 <div
-                    className="image-modal-overlay"
-                    onClick={() => setImageModalOpen(false)}
+                    className="lightbox-overlay animate-fade-in"
+                    onClick={() => setLightboxImage(null)}
                 >
-                    <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
-                        <img src={modalImageUrl} alt="صورة السؤال - عرض كامل" />
-                        <button
-                            className="modal-close-btn"
-                            onClick={() => setImageModalOpen(false)}
-                        >
-                            ✕
+                    <div className="lightbox-content animate-reveal-pop" onClick={(e) => e.stopPropagation()}>
+                        <button className="lightbox-close" onClick={() => setLightboxImage(null)}>
+                            <IconX />
                         </button>
+                        <img src={lightboxImage} alt="Enlarged view" />
                     </div>
                 </div>
             )}
