@@ -271,6 +271,11 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                                                 </span>
                                             </div>
                                             <p className="detail-question">{q.text}</p>
+                                            {q.image && (
+                                                <div className="detail-image">
+                                                    <img src={q.image} alt="" className="img-fluid rounded" />
+                                                </div>
+                                            )}
                                             <div className="detail-answers">
                                                 {userAnswer && !isCorrect && (
                                                     <p className="user-answer">
@@ -332,6 +337,16 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
 
             <div className="card card-body animate-fade-scale">
                 <p className="question-text">{currentQuestion.text}</p>
+
+                {currentQuestion.image && (
+                    <div className="question-image-container animate-fade-in">
+                        <img
+                            src={currentQuestion.image}
+                            alt="Question illustration"
+                            className="question-image"
+                        />
+                    </div>
+                )}
 
                 <div className="options-grid">
                     {currentQuestion.options.map((option, idx) => (
