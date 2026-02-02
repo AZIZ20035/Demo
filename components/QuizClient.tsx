@@ -174,12 +174,46 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
     }, [calculateScore, questions.length]);
 
     const getScoreLabel = useCallback(() => {
-        const percentage = getScorePercentage();
-        if (percentage >= 80) return { text: "ممتاز!", class: "excellent" };
-        if (percentage >= 60) return { text: "جيد جداً", class: "good" };
-        if (percentage >= 40) return { text: "متوسط", class: "average" };
-        return { text: "يحتاج تحسين", class: "needs-improvement" };
-    }, [getScorePercentage]);
+        const score = calculateScore();
+        if (score >= 16) return { text: "ممتاز!", class: "excellent" };
+        if (score >= 10) return { text: "متوسط", class: "average" };
+        return { text: "ضعيف", class: "needs-improvement" };
+    }, [calculateScore]);
+
+    // Get CTA content based on score (out of 20)
+    const getCTA = useCallback(() => {
+        const score = calculateScore();
+
+        // Foundation file URL (للتأسيس)
+        const foundationUrl = "https://preparacademy.com/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D9%82%D8%AF%D8%B1%D8%A7%D8%AA/p464090062";
+        // Collections file URL (للتجميعات)
+        const collectionsUrl = "https://preparacademy.com/%D8%AA%D8%AC%D9%85%D9%8A%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D9%82%D8%AF%D8%B1%D8%A7%D8%AA-2026-%D8%A7%D9%84%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A7%D9%84%D8%A3%D8%AD%D8%AF%D8%AB-%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%A6%D9%84%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%82%D8%B9%D8%A9/p511504040";
+
+        // Excellent: 16-20
+        if (score >= 16) {
+            return {
+                message: "مستواك ممتاز 👏\nباقي لك تثبيت وتدريب ذكي عشان تضمن الدرجة في الاختبار الحقيقي.",
+                buttonText: "أبغى أثبّت مستواي",
+                url: collectionsUrl
+            };
+        }
+
+        // Medium: 10-15
+        if (score >= 10) {
+            return {
+                message: "مستواك طيّب، بس يحتاج تدريب يرفع درجتك.\nشدّها صح وبتفرق معك.",
+                buttonText: "أبغى أرفع درجتي",
+                url: collectionsUrl
+            };
+        }
+
+        // Weak: 0-9
+        return {
+            message: "واضح إن الأساس يحتاج تقوية.\nابدأ من الصفر ووفّر على نفسك المحاولة.",
+            buttonText: "أبغى أبدأ من الصفر",
+            url: foundationUrl
+        };
+    }, [calculateScore]);
 
     if (questions.length === 0) {
         return (
@@ -196,8 +230,8 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
     if (isFinished) {
         const score = calculateScore();
         const scoreLabel = getScoreLabel();
-        const percentage = getScorePercentage();
-        const isHighScore = percentage >= 80;
+        const cta = getCTA();
+        const isHighScore = score >= 16;
 
         return (
             <div className="container">
@@ -224,10 +258,8 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                     <div className={`result-label ${scoreLabel.class} animate-pulse-soft stagger-2`}>
                         {scoreLabel.text}
                     </div>
-                    <p className="result-hint animate-fade-in stagger-3">
-                        {percentage >= 60
-                            ? "أداء رائع! استمر في التطوير والتدريب للوصول للقمة."
-                            : "لا تقلق! مع التدريب المستمر ستتحسن نتيجتك بشكل ملحوظ."}
+                    <p className="result-hint animate-fade-in stagger-3" style={{ whiteSpace: 'pre-line' }}>
+                        {cta.message}
                     </p>
                     <div className="result-actions animate-fade-in stagger-4">
                         <button
@@ -239,14 +271,12 @@ export default function QuizClient({ questions, buyUrl }: QuizClientProps) {
                         </button>
                         <a
                             className="btn btn-success btn-animate"
-                            href={percentage <= 50
-                                ? "https://preparacademy.com/%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D9%82%D8%AF%D8%B1%D8%A7%D8%AA/p464090062"
-                                : "https://preparacademy.com/%D8%AA%D8%AC%D9%85%D9%8A%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D9%82%D8%AF%D8%B1%D8%A7%D8%AA-2026-%D8%A7%D9%84%D8%A5%D8%B5%D8%AF%D8%A7%D8%B1-%D8%A7%D9%84%D8%A3%D8%AD%D8%AF%D8%AB-%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%A6%D9%84%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D9%88%D9%82%D8%B9%D8%A9/p511504040"}
+                            href={cta.url}
                             target="_blank"
                             rel="noreferrer"
                         >
                             <IconRocket />
-                            <span>احصل على الدورة الكاملة</span>
+                            <span>{cta.buttonText}</span>
                         </a>
                         <a className="btn btn-ghost btn-animate" href="/">
                             <div className="logo-icon" style={{ width: '24px', height: '24px', borderRadius: '4px' }}>
