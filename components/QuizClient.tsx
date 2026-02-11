@@ -67,7 +67,7 @@ const ConfettiEffect = () => {
     );
 };
 
-const EXAM_DURATION_SECONDS = 600; // 10 minutes
+const EXAM_DURATION_SECONDS = 1200; // 20 minutes
 
 type QuizClientProps = {
     questions: Question[];
